@@ -1,0 +1,72 @@
+ @user = User.all 
+ 
+ <% @user.each do |user| %>
+  <div>
+    <%= check_box_tag "attendby[]", user.id %>
+    <%= label_tag "attendby_#{user.id}", user.id %>
+  </div>
+<% end %>
+
+<%= text_field_tag 'selected_user_ids', params[:attendby] %>
+
+
+
+
+
+
+
+
+// meeting
+
+  <% @meets.each do |meet| %>
+    1<% if meet.type2 == 2 && current_user.role == "hod" %>
+    <%= render meet %>
+          
+    <%= link_to "Give agenda", home_new_path(:id => meet.id) %> 
+    <% end %>
+
+    2<% if meet.type2 == 2 && current_user.role == "dean" %>
+    <%= render meet %>
+   
+    <%= link_to "Give agenda", home_new_path(:id => meet.id) %> 
+    <% end %>
+
+    3<% if meet.type2 == 3 && current_user.role == "hod" %>
+    <%= render meet %>
+    <%= link_to "Give agenda", home_new_path(:id => meet.id) %> 
+    
+    <% end %>
+    
+    4<% if meet.type2 == 3 && current_user.role == "chairperson" %>
+    <%= render meet %>
+   
+    <%= link_to "Give agenda", home_new_path(:id => meet.id) %> 
+    <% end %>
+    
+    5<% if meet.type2 == 3 && current_user.role == "dean" %>
+    <%= render meet %>
+    
+    <%= link_to "Give agenda", home_new_path(:id => meet.id) %> 
+    <% end %>
+
+    6<% if meet.type2 == 1 && current_user.role == "dean" %>
+    <%= render meet %>
+   
+    <%= link_to "Give agenda", home_new_path(:id => meet.id) %> 
+    <% end %>
+
+     7<% if meet.type2 == 1 && current_user.role == "director" %>
+    <%= render meet %>
+      <%= link_to "Give agenda", home_new_path(:id => meet.id) %> 
+  
+    <% end %>
+  <% end %>
+
+
+
+
+ <% if meet.user_id == current_user.id %>
+
+
+                <%end%>
+

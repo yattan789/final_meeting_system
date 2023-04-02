@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Miniute of meeting </h1>
+
+<div>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+      
+        <thead>
+            <tr>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Meeting Title</th>
+                <th>Description</th>
+                <th>For</th>
+              
+            </tr>
+        </thead>
+        <tbody id="tableData">
+            
+            <div id="addvs">
+ 
+   <% @moms.each do |meet| %>
+<tr>  
+ 
+                <td><%= meet.venue%></td>
+                <td><%= meet.date%></td>
+                 <td><%= meet.title%></td>
+                <td><%= meet.report%></td>
+                <td><%= meet.attendby%></td>
+                <td><%= link_to "edit", meet %></td>
+            </tr>
+  <%end%>
+        </tfoot>
+    </table>
+</div>
+
+
+
+
+

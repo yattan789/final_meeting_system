@@ -1,0 +1,41 @@
+
+<%= form_for @user, url: admin_path(@user), method: :put do |f| %>
+
+ <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+
+<div class="card w-50 justify-content-center" style="color:black">
+<div class="card-header">
+    <h2 style="text-center"> Edit User </h2>
+
+
+  <div>
+    <%= f.label :email %>
+     <p style="text-center"><%= f.email_field :email %></p>
+  </div>
+
+  <div>
+    <%= f.label :role %>
+   <p style="text-center"> <%= f.text_field :role %></p>
+
+  <div>
+  <%= f.label :status %>
+    <p style="text-center">
+    <%=
+      f.select(:status,options_for_select([
+      ['False',false] , ['True',true] ]  ))  
+    %>
+    </p>
+  </div>
+
+
+
+  
+  <div>
+    <%= f.submit %>
+  </div>
+
+
+</div>
+</div>
+<% end %>

@@ -1,0 +1,48 @@
+<div id="<%= dom_id meet %>">
+    <p>
+  <strong>ID:</strong>
+    <%= meet.id %>
+
+    <strong>User:</strong>
+    <%= meet.user_id %>
+ 
+    <strong>Date:</strong>
+    <%= meet.date %>
+ 
+    <strong>Title:</strong>
+    <%= meet.title %>
+
+    <strong>Description:</strong>
+    <%= meet.description %>
+  
+    <strong>Type:</strong>
+    <% if meet.type2 == 1 %>
+        For All Deans
+    <%end%>
+
+    <% if meet.type2 == 2 %>
+  
+  For all HODs
+    <%end%>
+
+
+    <% if meet.type2 == 3 %>
+
+For All Chairperson + HOD
+    <%end%>
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

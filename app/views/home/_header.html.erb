@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <title>Meeting Managment System</title> 
+        
+        <link  rel="stylesheet"  type="text/css" href="style.css" >
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+       <!-- bootstrap icon css not applied-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" >
+        <!-- bootstrap core css -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <!-- fonts awesome style -->
+        <link href="css/font-awesome.min.css" rel="stylesheet" />
+ 
+    </head>
+  
+<body>  
+
+<!-- header section and navbar-->    
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+<%= link_to 'Meeting Management',root_path, class:"navbar-brand" %>
+  <div class="container-fluid">
+        
+      <% if user_signed_in? %>
+          <%= link_to "Sign Out", admin_sign_out2_path,method: :delete,:class => "nav-link active text-primary" %>
+          <%= link_to 'Edit Profile',edit_user_registration_path, :class => "nav-link active text-primary"%>
+     <% else %>
+          <%= link_to 'Sign Up',new_user_registration_path, :class=>"nav-link active text-primary"%>
+          <%= link_to 'Sign in', user_session_path, :class=>"nav-link active text-primary" %>
+     <% end %>
+ 
+  </div>
+</nav>
+
+
+</header>
+<% if user_signed_in? && current_user.status == true %>
+<section class="services py-5 bg-light">
+<div  class="container ">
+  <div>
+    <h3 class="text-center">Hello!<span class="text-primary"><%= current_user.role %> ( <%= current_user.department%> )</h1></span></h3>
+    <hr / class="w-2 m-auto">
+    
+  </div>
+
+  <div class="row">
+
+      <%if current_user.role == "dean" || current_user.role == "director"  %>
+        <div class="col-sm-12 col-md-4 col-lg-4  col-12">
+        <div class="card border-success">
+        <div class="card-body">
+         <!--<i class="fa fa-user icon"></i> -->
+          <h5 class="card-title">Create Meetings</h5>
+          <p class="card-text">Dashboard to create meeting.</p>
+          <%= link_to " Create Meeting", new_meet_path , :class => "btn btn-primary"%>
+        </div>
+        </div>
+        </div>
+        
+        <div class="col-sm-12 col-md-4 col-lg-4  col-12">
+        <div class="card border-success">
+        <div class="card-body">
+         <!--<i class="fa fa-user icon"></i> -->
+          <h5 class="card-title">Previous Meetings</h5>
+          <p class="card-text">See or edit your previous meetings.</p>
+        <%= link_to " Details Meeting", meets_path ,:class => "btn btn-primary"%>
+        </div>
+        </div>
+        </div>
+
+        <% end %>
+
+        <%if current_user.role  == "help_person"%>
+          <div class="col-sm-12 col-md-4 col-lg-4  col-12">
+          <div class="card border-success">
+          <div class="card-body">
+          <!--<i class="fa fa-user icon"></i> -->
+            <h5 class="card-title">Create Minutes of Meeting</h5>
+            <p class="card-text">Dashboard to create Minutes of meeting.</p>
+            <%= link_to "Miniute of Meeting", home_see_your_path ,:class => "btn btn-primary"%> 
+          </div>
+          </div>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4  col-12">
+          <div class="card border-success">
+          <div class="card-body">
+          <!--<i class="fa fa-user icon"></i> -->
+            <h5 class="card-title">Edit Minutes</h5>
+            <p class="card-text">Edit Minutes of meeting created before.</p>
+            <%= link_to "Edit", moms_path ,:class => "btn btn-primary"%> 
+          </div>
+          </div>
+          </div>
+
+
+          <%end%>       
+           <div class="col-sm-12 col-md-4 col-lg-4  col-12">
+          <div class="card border-success">
+          <div class="card-body">
+          <!--<i class="fa fa-user icon"></i> -->
+            <h5 class="card-title">Database</h5>
+            <p class="card-text">See all meetings.</p>
+            <%= link_to "open", home_index2_path ,:class => "btn btn-primary"%> 
+          </div>
+          </div>
+          </div>
+
+          <% if current_user.role=="admin" %>
+ 
+        <div class="col-sm-12 col-md-4 col-lg-4  col-12">
+        <div class="card border-success">
+        <div class="card-body">
+         <!--<i class="fa fa-user icon"></i> -->
+          <h5 class="card-title">Admin Dashboard</h5>
+          <p class="card-text">Create User / Edit </p> 
+          
+            <%= link_to "Approve Users", admin_index_path ,:class => "btn btn-primary"%> 
+
+          
+        </div>
+        </div>
+        </div>
+
+        <%end%>
+ <%end%>
+     </div>
+
+    </div>
+
+</section>
+
+
+
+  
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+     
+</body> 
+
+
+</html>

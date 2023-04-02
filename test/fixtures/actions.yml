@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mom: one
+  description: MyText
+  budget: MyString
+  deadline: 2023-03-23
+  appointed_person: MyString
+
+two:
+  mom: two
+  description: MyText
+  budget: MyString
+  deadline: 2023-03-23
+  appointed_person: MyString

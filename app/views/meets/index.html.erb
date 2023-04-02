@@ -1,0 +1,68 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Previous Meeting</h1>
+<div>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+      
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Details</th>
+              
+            </tr>
+        </thead>
+        <tbody id="tableData">
+            
+            <div id="addvs">
+ 
+  <% @meets.each do |meet| %>
+<tr>  
+ 
+                <td>
+                <%if meet.type2 == 1%>
+                For Deans
+                <% end %>
+                
+                <%if meet.type2 == 2%>
+                For All HODs 
+                <% end %>
+                
+                <%if meet.type2 == 3%>
+                For all HODs and Chairperson
+                <% end %>
+
+                </td>
+                <td><%= meet.date%></td>
+                 <td><%= meet.title%></td>
+                <td><%= meet.description%></td>
+                <td>
+                     
+      <%= link_to "Details", meet %> 
+      <%= link_to "Print", meet_path(id:meet.id,format:"pdf") %> 
+                </td>
+
+               <% end %>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableData tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+</div>
+

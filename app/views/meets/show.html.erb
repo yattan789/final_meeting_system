@@ -1,0 +1,115 @@
+<p style="color: green"><%= notice %></p>
+<strong>MEETING </strong>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">For</th>
+     <% if current_user.id == @meet.user_id%> <th scope="col">Delete</th> <%end%>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <%= @meet.title %> </td>
+      <td> <%= @meet.description %> </td>
+      <td> <%= @meet.date %> </td>
+      <td>              
+                <%if @meet.type2 == 1%>
+                For Deans
+                <% end %>
+                
+                <%if @meet.type2 == 2%>
+                For All HODs 
+                <% end %>
+                
+                <%if @meet.type2 == 3%>
+                For all HODs and Chairperson
+                <% end %>
+      </td>
+      <% if current_user.id == @meet.user_id%>
+      <td> <%= button_to "Destroy this meeting", @meet, method: :delete , :class => "btn btn-danger"%> </td>
+      <%end%>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+<% @mom.each do |x| %>   
+<dl class="row">
+  <dt class="col-sm-3">Venue</dt>
+  <dd class="col-sm-9">
+ <%= x.venue%>
+</dd>
+  <dt class="col-sm-3">Report</dt>
+  <dd class="col-sm-9">
+   <p> <%= x.report %></p>
+  </dd>
+  </dl>
+  </dd>
+<% end %> 
+
+
+
+</br>
+<strong>SUGGESTED AGENDAS</strong>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Agenda</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Updated At</th>
+    </tr>
+  </thead>
+  <tbody>
+
+   <% @all_agenda.each do |x| %>
+    <tr>
+      <td> <%= x.content %> </td>
+      <td> <%= x.created_at %> </td>
+      <td> <%= x.updated_at %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+</br>
+<strong>Decisions Taken</strong>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Appointed</th>
+      <th scope="col">Budget</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% @action.each do |action| %> 
+    <tr>
+      <td> <%= action.description %> </td>
+      <td> <%= action.appointed_person %> </td>
+      <td> <%= action.budget %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "Back", meets_path , :class => "btn btn-secondary" %>
+
+<%= link_to "Edit/Reshedule this meeting", edit_meet_path(@meet) ,:class => "btn btn-primary"%> 
+
+
+

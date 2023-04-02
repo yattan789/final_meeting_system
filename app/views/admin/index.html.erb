@@ -1,0 +1,29 @@
+
+<strong>All Users</strong>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">status</th>
+      <th scope="col">Edit</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td><%= user.status %></td>
+        <td> <%= link_to 'Edit', admin_edit_path(:id => user.id), class:"btn btn-dark" %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
