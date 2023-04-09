@@ -1,8 +1,7 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
-
+  - name: postgres
+  
+      ipAllowlist: []
 services:
   - type: web
     name: mysite
