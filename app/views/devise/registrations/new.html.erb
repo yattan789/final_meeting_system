@@ -25,7 +25,7 @@
  
   <div class="field">
      <%= f.label :role %><br />
-     <%= f.select(:role,options_for_select([ ['Chairperson','chairperson'] , ['HOD','hod'] , ['Director','director'] , ['Help_person' , 'help_person'] , ['admin' , 'admin']   ] )) %>
+     <%= f.select(:role,options_for_select([   ['None',' '],  ['Director','director'] , ['Dean', 'dean'] ,['HOD','hod'] ,  ['Chairperson','chairperson']   , ['Help_person' , 'help_person'] , ['admin' , 'admin']   ] )) %>
    </div>
 
   <div class="field">
@@ -36,7 +36,7 @@
   <div class="field">
      <%= f.label :department %><br /> 
      
-     <%= f.select(:department,options_for_select([ ['CSE','cse'] , ['EC','ec'] , ['CIVIL','civil'] , ['ELECTRONIC' , 'electronic'] ] )) %>
+     <%= f.select(:department,options_for_select([ ['None',' '], ['CSE','cse'] , ['EC','ec'] , ['CIVIL','civil'] , ['ELECTRONIC' , 'electronic'] ] )) %>
   </div>
   
   <div class="actions">
