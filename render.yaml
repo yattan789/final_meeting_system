@@ -1,7 +1,7 @@
 databases:
   - name: postgres
   
-      ipAllowlist: []
+      ipAllowList: []
 services:
   - type: web
     name: mysite
@@ -17,6 +17,6 @@ services:
         sync: false
     - type: redis
       name: redis
-      ipAllowlist: []
+      ipAllowList: []
       plan: free
       maxmemoryPolicy: noeviction
